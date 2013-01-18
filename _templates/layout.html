@@ -9,21 +9,34 @@
     <link rel="{{ link.rel }}" href="{{ link.href }}"{% if link.media %} media="{{ link.media }}"{% endif %} type="{{ link.type }}">
     {%- endfor -%}
     {%- endblock %}
+    <link rel="stylesheet" href="http://www.petripurho.com/stuff/_pygments.css" type="text/css">
+    <link rel="stylesheet" href="http://www.petripurho.com/stuff/gummistyle.css" type="text/css">
 </head>
 <body>
+
 <div class="container">
-  <div class="header">
-    <div class="navigation">
-    <ul>
-      <li><a href="/">blog</a>
-      <li><a href="/archive/">archive</a>
-      <li><a href="/tags/">tags</a>
-    </ul>
-    </div>
+  <br/>
+  <h1 id="blogtitle">Gummiblog</h1>
+  <div class="navigation">
+    <a href="/" class="nav">Home</a> 			<b class="spacer">/</b> 
+    <a href="/archive/" class="nav">Archive</a> 	<b class="spacer">/</b> 
+    <a href="/projects/" class="nav">Projects</a> 	<b class="spacer">/</b> 
+    <a href="/talks/" class="nav">Talks</a> 		<b class="spacer">/</b> 
+    <a href="/about/" class="nav">About</a>
   </div>
+  <br/>
+</div>
+
   <div class="content">
   {%- block body -%}{%- endblock -%}
   </div>
+  
+  <br/>
+    <center><small>
+      Content by Petri Purho | License: <a href="http://creativecommons.org/licenses/by-sa/2.5/">Creative Commons by-sa</a><br/>
+    </small></center>
+  <br/>
+
 </div>
 </body>
 </html>

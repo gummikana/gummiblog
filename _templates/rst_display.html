@@ -5,18 +5,22 @@
   {{ rst.html_title }}
   {%- endif %}
   {% if ctx.pub_date %}
-  <p class=date>written on {{ format_date(ctx.pub_date, format='full') }}
+  <p class=date><i><small>written on {{ format_date(ctx.pub_date, format='full') }}</small></i></p>
   {% endif %}
-
+  
+  <div class="content_text">
+  
   {{ rst.fragment }}
-
+  
+  </div>
   {% if ctx.tags %}
-  <p class=tags>This entry was tagged
+  <p class=tags><small>This entry was tagged
     {% for tag in ctx.tags|sort(case_sensitive=true) %}
       {%- if not loop.first and not loop.last %}, {% endif -%}
       {%- if loop.last and not loop.first %} and {% endif %}
       <a href="{{ link_to('tag', tag=tag) }}">{{ tag }}</a>
     {%- endfor %}
+  </small></p>  
   {% endif %}
 
   {% if 'disqus' in config.active_modules %}

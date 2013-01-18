@@ -1,0 +1,6 @@
+active_modules: [pygments, tags, blog, latex]
+author: Petri Purho
+canonical_url: http://petripurho.com/
+modules:
+  pygments:
+    style: tango

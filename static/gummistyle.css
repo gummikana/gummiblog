@@ -56,9 +56,16 @@ a:hover, a:active {
 }
 
 .date{ color: #666666; margin-top:-25px; margin-bottom:30px; line-height:1.5; }
-.date_index{ color: #666666; line-height:1.5; }
 .tags{ color: #666666; margin-top:45px; text-align:right;}
 
 .content { background:#F9F9F9; border:1px solid #E3E4E6; padding-top:20px; padding-left: 40px; padding-right:100px; padding-bottom:30px;  }
 .title { line-height:1.5; }
 .content_text { font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; line-height:1.7; font-size:18px; }
+
+#follow_buttons { float:right; border: 0; margin:0; }
+ 
+a.follow_button:link, a.follow_button:visited a.follow_button:hover, a.follow_button:active {
+        padding: 0px;
+	border:0px;
+}
+

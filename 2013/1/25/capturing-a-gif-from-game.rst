@@ -7,16 +7,21 @@ summary: |
 Recording a .gif from game
 ==========================
 
-I recently wrote a small utility that captures a .gif animation directly from
-the game. Here's a quick explonations of how I did it. Things to consider, I'm 
+The `standard way to capture a .gif animation from your game <http://polycube.blogspot.fi/2008/06/animated-gif-creation.html>`_, 
+seems to be, to capture a video (with FRAPS or CamStudio) and then convert it to a bunch of 
+frames and then assemble a .gif animation from those frames. 
+
+Problem with this is the time you have to spent to do it. It's not that much time, but it is enough to 
+cause friction. To solve this problem I wrote a small utility that captures a .gif animation directly from
+the game. Here's a quick explonations of how I did this. Things to consider, I'm 
 using C++, OpenGL and Windows. The following code snippets, libraries were used:
 
-  - `Sean Barrett's stbiw <http://nothings.org/stb/stb_image_write.h>`_
-  - `Image Magick <http://www.imagemagick.org/script/index.php>`_
-  - `ExecuteProcess <http://goffconcepts.com/techarticles/development/cpp/createprocess.html>`_
+  - `Sean Barrett's stbiw <http://nothings.org/stb/stb_image_write.h>`_ to save the frames as .png files.
+  - `Image Magick <http://www.imagemagick.org/script/index.php>`_ to create a .gif from the frames.
+  - `ExecuteProcess <http://goffconcepts.com/techarticles/development/cpp/createprocess.html>`_ to run the Image Magick script.
 
 
-The general principle is actually pretty simple. I just save every other screenshot into 
+The general principle is actually pretty simple. I just save every other frame into 
 a folder, with a running number. After that, run the Image Magick script that 
 produces a gif from the saved screenshots. 
 

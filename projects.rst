@@ -3,4 +3,4 @@ public: yes
 Projects
 ========
 
-Hello world
+Hello worldish

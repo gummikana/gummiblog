@@ -1,8 +1,7 @@
 public: yes
 tags: [c++, gif, debug utils]
 summary: |
-  Useless first post, a bit of meta discussion about the blogging 
-  platform choice.
+  A small tutorial on how I added .gif recording ability into my game engine.
   
 Recording a .gif from game
 ==========================

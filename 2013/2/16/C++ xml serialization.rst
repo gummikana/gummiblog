@@ -6,35 +6,51 @@ summary: |
 ceng_xml - C++ tool to serialize data into an xml  
 =================================================
 
-There are certain utilities that a programmer uses quite often. One such thing for me is a collection of C++ classes that aid in the serialization of data to an xml file and from there. I shared these tools quite a long time ago, but I never made any kind of noise of them, so I guess none else has ever used them. They've served me well so I thought I'd give a little back to the open source community that has given me so much.
+There are certain utilities that a programmer uses quite often. One such thing for me is a collection of C++ classes that aid in the serialization of data to an xml file and from there. I shared these tools quite a long time ago, but I never made any kind of noise of them, so I guess no one else uses them. They've served me well so I thought I'd give a little back to the open source community that has given me so much.
 
-The basic jist:
+code example #1
+---------------
+
 .. code-block:: c
 
-struct RandomClass {
-	int number_param;
-	std::string text_param;
-	std::string lots_of_text;
+	struct RandomClass {
+		int number_param;
+		std::string text_param;
+		std::string lots_of_text;
 
-	void Serialize( ceng::CXmlFileSys* filesys ) {	
-		XML_BindAttribute( filesys, number_param );
-		XML_BindAttributeAlias( filesys, text_param, "text" );
-		XML_Bind( filesys, lots_of_text );
-	}
-};
+		void Serialize( ceng::CXmlFileSys* filesys ) {	
+			XML_BindAttribute( filesys, number_param );
+			XML_BindAttributeAlias( filesys, text_param, "text" );
+			XML_Bind( filesys, lots_of_text );
+		}
+	};
 
--- 
+
 That's it. That's the way you load and save data from an xml file.
 
-RandomClass rc;
-ceng::XmlSaveToFile( rc, "random_class.xml", "RandomClass" ); 
-ceng::XmlLoadFromFile( rc, "random_class.xml", "RandomClass" ); 
 
-----
+code example #2
+---------------
 
-The output of this looks like this:
-<xml file>
-----
+.. code-block:: c
+
+	RandomClass rc;
+	ceng::XmlSaveToFile( rc, "random_class.xml", "RandomClass" ); 
+	ceng::XmlLoadFromFile( rc, "random_class.xml", "RandomClass" ); 
+
+
+random_class.xml
+----------------
+The output of this looks like this. Note not initializing the data causes some interesting values to appear.
+
+.. code-block:: xml
+
+	<RandomClass number_param="61214699" text="" >
+	  <lots_of_text>
+	  </lots_of_text>
+	</RandomClass>
+
+
 
 Here's the git repository of ceng_xml files...
 

@@ -57,6 +57,56 @@ Here's the git repository of ceng_xml files...
 
 The ease of loading data with this utility has served me well. I think I've used it in every single game that I've created in C++. I'll go into a bit more detail in here. 
 
+Details
+-------
+
+There really two parts to this whole operation. First order of business is parsing open an xml file and creating the CXmlNode tree structure that corresponds to the xml file. The second part is serializing the data into or from the CXmlNode tree structure.
+
+Parsing the XML file
+--------------------
+
+Parsing an xml file is done with the CXmlParser class. It calls the handler it's given with functions like: StartElement(...), EndElement(...) and it's the job of the handler to create an CXmlNode tree structure from the data the parser passes to it. 
+
+	CXmlNode* ParseXmlFile( string file ) {
+		CXmlParser parser;
+		CXmlHandler handler;
+
+		parser.SetHandler( &handler );
+		parser.ParseFile( file.c_str() );
+
+		CXmlNode* root_node = handler.GetRootElement();
+		return root_node;
+	}
+
+Side note: This interface should allow for other file types to be used instead of xml. Just write a new parser for the file type and it should work. Even existing parser could be plugged into this, like the industry's standard XML parser TinyXML (or TinyXML2). Or we could extend this to use JSON since that seems to be hot right now. Also a binary format could be nice as well... If someone is brave enough to give these a try, let me know :)
+
+Saving to an XML file
+---------------------
+
+Saving is actually done a bit differently. Since there's really no need parse anything, saving is just done with the CXmlStreamHandler class. 
+
+	void SaveToXml( CXmlNode* node, string file ) {
+		ofstream file_output( file.c_str(), ios::out );
+
+		CXmlStreamHandler handler;
+		handler.ParseOpen( node, file_output );
+
+		file_output.close();
+	}
+	
+
+Here's the CXmlStreamHandler::ParseOpen(...) - function which recursivly calls it's self and parses the tree.
+
+	void ParseOpen( CXmlNode* rootnode, std::ostream& stream )
+	{
+		StartElement( rootnode->GetName(), CreateAttributes( rootnode ), stream );
+		Characters( rootnode->GetContent() , stream );
+		for( int i = 0; i < rootnode->GetChildCount(); i++ )
+			ParseOpen( rootnode->GetChild( i ), stream );
+
+		EndElement( rootnode->GetName(), stream );
+	}
+	
 ----
 
 The problems

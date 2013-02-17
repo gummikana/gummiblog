@@ -26,11 +26,14 @@ code example #1
 	};
 
 
-That's it. That's the way you load and save data from an xml file.
+That's it. That's the way you serialize the data.
 
 
 code example #2
 ---------------
+
+Here's how you save and load an object into a file with ceng_xml.
+
 
 .. code-block:: c
 
@@ -39,9 +42,7 @@ code example #2
 	ceng::XmlLoadFromFile( rc, "random_class.xml", "RandomClass" ); 
 
 
-random_class.xml
-----------------
-The output of this looks like this. Note not initializing the data causes some interesting values to appear.
+The output of this looks like this. Note not initializing the data causes some strange values to appear.
 
 .. code-block:: xml
 

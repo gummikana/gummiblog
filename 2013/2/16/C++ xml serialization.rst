@@ -1,4 +1,4 @@
-public: yes
+public: no
 tags: [c++, xml, debug utils, serialization, utilities]
 summary: |
   ceng_xml - a C++ tool to serialize data into and out from an xml file.

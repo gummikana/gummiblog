@@ -8,8 +8,8 @@ ceng_xml - C++ tool to serialize data into an xml
 
 There are certain utilities that a programmer uses quite often. One such thing for me is a collection of C++ classes that aid in the serialization of data to an xml file and from there. I shared these tools quite a long time ago, but I never made any kind of noise of them, so I guess no one else uses them. They've served me well so I thought I'd give a little back to the open source community that has given me so much.
 
-code example #1
----------------
+Code: Serializing basics
+------------------------
 
 .. code-block:: c
 
@@ -26,28 +26,29 @@ code example #1
 	};
 
 
-That's it. That's the way you serialize the data.
+That's it. That's the way you serialize the data. Note that you don't have to inherit from a base class. You only need to have a public function void Serialize( ceng::CXmlFileSys* filesys ) and you're good to go. There are two ways you can serialize data. You can "bind" them as attributes using XML_BindAttribute or XML_BindAttributeAlias -macros. The Alias version of the macro lets you define a separate name for the attribute. If you use XML_BindAttribute, the name of variable will be used. XML_Bind will write a new child node with the name of the variable. XML_BindAlias will let you give a name to the child node. You can use XML_Bind also to serialize other classes. 
 
 
-code example #2
----------------
+Code: Saving and loading
+------------------------
 
-Here's how you save and load an object into a file with ceng_xml.
+Here's how you load and save an object into a file with ceng_xml.
 
 
 .. code-block:: c
 
 	RandomClass rc;
-	ceng::XmlSaveToFile( rc, "random_class.xml", "RandomClass" ); 
 	ceng::XmlLoadFromFile( rc, "random_class.xml", "RandomClass" ); 
+	ceng::XmlSaveToFile( rc, "random_class.xml", "RandomClass" ); 
 
 
 The output of this looks like this. Note not initializing the data causes some strange values to appear.
 
 .. code-block:: xml
 
-	<RandomClass number_param="61214699" text="" >
+	<RandomClass number_param="12345" text="this is text" >
 	  <lots_of_text>
+	    This is also text
 	  </lots_of_text>
 	</RandomClass>
 
@@ -56,6 +57,41 @@ The output of this looks like this. Note not initializing the data causes some s
 Here's the git repository of ceng_xml files...
 
 The ease of loading data with this utility has served me well. I think I've used it in every single game that I've created in C++. I'll go into a bit more detail in here. 
+
+
+Code: Serializing advanced
+--------------------------
+
+.. code-block:: c
+
+	struct AnotherClass {
+		bool		var_bool;
+		float		var_float;
+		double		var_double;
+
+		void Serialize( ceng::CXmlFileSys* filesys ) {
+			XML_BindAttribute( filesys, var_bool );
+			XML_BindAttribute( filesys, var_float );
+			XML_BindAttribute( filesys, var_double );
+		}
+	};
+
+
+	class CompositeClass {
+	public:
+		CompositeClass() : child_2( NULL ) { }
+		
+		AnotherClass	child_1;
+		AnotherClass*	child_2;
+		
+		void Serialize( ceng::CXmlFileSys* filesys ) {	
+			XML_BindAlias( filesys, child_1, "Child1" );
+			XML_BindPtrAlias( filesys, child_2, "Child2" );		// note the different function used
+		}
+	};
+
+The XML_BindPtrAlias is function that creates or destroyes the pointer if the node is found in the xml file or not.
+
 
 Details
 -------

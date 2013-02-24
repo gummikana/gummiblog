@@ -53,12 +53,6 @@ The output of this looks like this. Note not initializing the data causes some s
 	</RandomClass>
 
 
-
-Here's the git repository of ceng_xml files...
-
-The ease of loading data with this utility has served me well. I think I've used it in every single game that I've created in C++. I'll go into a bit more detail in here. 
-
-
 Code: Serializing advanced
 --------------------------
 

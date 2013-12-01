@@ -6,12 +6,23 @@ summary: |
 Recording a .gif from game
 ==========================
 
+Source code
+-----------
+
+The full source code of my gif recorder and screenshotter utility can be found on `gist.github.com/gummikana/7729520 <https://gist.github.com/gummikana/7729520>`_ . 
+It uses my game development `framework poro  <https://github.com/gummikana/poro/>`_ and a few other utilities. 
+
+
+The problem
+-----------
+
 The `standard way to capture a .gif animation from your game <http://polycube.blogspot.fi/2008/06/animated-gif-creation.html>`_, 
 seems to be, to capture a video (with FRAPS or CamStudio) and then convert it to a bunch of 
 frames and then assemble a .gif animation from those frames. 
 
 Problem with this is the time you have to spent to do it. It's not that much time, but it is enough to 
-cause friction. To solve this problem I wrote a small utility that captures a .gif animation directly from
+cause friction. And that friction is enough to stop me from capturing funny moments in my game as gifs. 
+To solve this problem I wrote a small utility that captures a .gif animation directly from
 the game. Here's a quick explonations of how I did this. Things to consider, I'm 
 using C++, OpenGL and Windows. The following code snippets, libraries were used:
 
@@ -297,4 +308,19 @@ code when the screenshots are being saved. I leave these problems to you to
 solve :) For my current project I only need to capture small areas of the 
 screen, so resizing wouldn't be of much use.
 
+
+Optimizing the gif animation
+----------------------------
+
+Just a quick note to let you know `gifsicle <http://www.lcdf.org/gifsicle/>`_ is a very good tool 
+to optimize the filesize of the gif animation. 
+
+Here's the optimization command that I use.
+
+::
+	gifsicle -O2 --colors 128 input_anim.gif > output_anim.gif
+
+This works well for the game I'm working on, but your mileage may vary. I just tested it for a 
+gif animation I had done and the compression rate was about 2.92. The gif 
+animation went down from 2 315 kB to 791 kB without any noticeable quality loss.
 

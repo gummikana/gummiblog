@@ -6,7 +6,7 @@ summary: |
 Automatic Dev Log from TODO.txt (and a game)
 ============================================
 
-I created a PHP script that parses my TODO.txt and creates daily dev logs, 
+I created a PHP script that parses my TODO.txt and automagically creates daily dev logs, 
 complete with screenshots (taken automatically) from the game. The full 
 source code of `devlogger can be found on github <https://github.com/gummikana/devlogger>`_ .
 
@@ -27,35 +27,57 @@ To solve this problem I created few scripts that automate the process.
 Genesis
 -------
 
-The genesis of these automatic dev logs is really in productivity tool that tracks my process.
+The genesis of these automatic dev logs is really in post-it notes.
 Long ago I really enjoyed using `post-it <http://www.kloonigames.com/blog/wp-content/uploads/2009/01/dev_img_03.jpg>`_ 
 `notes <http://www.kloonigames.com/blog/wp-content/uploads/2009/01/dev_img_01.jpg>`_ to track tasks 
 that had to be done. This analog method had couple of advantages to it. First it worked as an easy way 
 to write down tasks and mark them done and have them be easily glanced. Also a big part of it was the sense of 
-progress you'd get from the number of post-its would grow around your monitor.
+progress you'd get as the post-its would reproduce around your monitor.
 
-Unfortunately in today's world of laptops and flat screens the post-it method has become almost useless. My 
-post-its would keep falling off.
+Unfortunately the world moved on from bulky and fast response CRT monitors into the new age of slow response flat screens with 
+very tiny none existing borders. The post-it method had a fall down. Quite literally. 
 
-Enter the TODO.txt.
-
-After the world moved on from bulky (fast response) CRT monitors into the new age of laptops and flat screens with 
-very tiny, none existing borders, the post-it method had a fall down. Quite literally. 
-
-I started writing my TODO's into a simple text file with notepad. This worked very well for me. I tried couple of 
-applications for this, but they all felt horrible and usually ran in the browser. The browser is the worst place to
-put a TODO program, since it's such a tiny step (CTRL + T) to go from selecting next task to work on, to a hour long
+Instead I started writing my TODO's into a simple text file with notepad. This worked very well for me. I tried couple of 
+"real" applications, but they all felt horrible and usually ran in the browser. The browser is the worst place to
+put a TODO application, since it's such a tiny step (CTRL + T) to go from selecting next task to work on, to a hour long
 bindge of looking for inspiration in the form of cat pictures. 
 
-The plain text TODO.txt server me very well. Especially after I started sharing it and keeping it in synch with 
+The plain text TODO.txt served me very well. Especially after I started sharing and keeping it in synch with 
 `Dropbox <https://www.dropbox.com/>`_ .
 
+The problem with the TODO.txt was that it lacked the sense of progress that you'd get from the post-it notes. As the file would
+grow in size, it would get too big to be useful. After editing it down to just a handful of unfinished tasks it felt like all
+my progress on the project was erased. 
+
+At the same time I was wondering if I could do some kind of productivity tracker tool. I've experimented with these before, 
+but they have the same problem as dev logging. If I have to do anything extra to use them, they fall by the way side. Then 
+it hit me: I could parse the TODO.txt with an external program and use it to track my progress. Just to get some kind of 
+stats about my working habbits. Dropbox proved to be very useful for this, since I could share my TODO.txt with the internet and
+I could just write a small script that would run on a server and read the file from time to time and parse it.
+
+From there the idea of automatically creating dev logs was a very tiny step.
 
 
-I've always been a fan of maintaining and using a simple text file TODO.txt. In this file 
-I write stuff that I need to implement 
+The other part of this whole process lied in another productivity and process tracking method I had written. The idea was simply
+to save random screenshot from the game everytime I ran it. This way I could get a visual look into how things very progressing. 
+This also fit nicely into the game I was making, since the visual difference from random to random shot was quite big. This proved
+to be a very fun and useful way to get somekind of sense of progress. Then I figured I could just pick one of these random shots
+every day and I'd have a fully automated dev logs. And that's what I did.
 
-There are certain utilities that a programmer uses quite often. One such thing for me is a collection of C++ classes that aid in the serialization of data to an xml file and from there. I shared these tools quite a long time ago, but I never made any kind of noise of them, so I guess no one else uses them. They've served me well so I thought I'd give a little back to the open source community that has given me so much.
+Another unespected perk of this system was, that I know have a complete history of all my TODO.txts. There always seems to be 
+horrible feeling of loss when you destroy or remove completed tasks from TODO.txts. I've even know to carry some of the post-it
+notes from previous projects into new appartements that I've moved into. This knowledge that I have the complete history of
+all the TODO.txts makes it much easier to edit and remove things from my TODO.txts.
+
+Technical Details
+-----------------
+
+I have a web server that runs few PHP scripts and a MYSQL database. Into this database all the tasks are entered and parsed.
+On the server I keep a daily copy of the actual TODO.txt. 
+
+
+
+
 
 Code: Serializing basics
 ------------------------

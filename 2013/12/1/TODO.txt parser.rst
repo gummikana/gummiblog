@@ -42,7 +42,7 @@ Instead I started writing my TODO's into a simple text file with notepad. This w
 put a TODO application, since it's such a tiny step (CTRL + T) to go from selecting next task to work on, to a hour long
 bindge of looking for inspiration in the form of cat pictures. 
 
-The plain text TODO.txt served me very well. Especially after I started sharing and keeping it in synch with 
+The plain text TODO.txt served me very well. Especially after I started sharing and keeping it in sync with 
 `Dropbox <https://www.dropbox.com/>`_ .
 
 The problem with the TODO.txt was that it lacked the sense of progress that you'd get from the post-it notes. As the file would
@@ -52,21 +52,21 @@ my progress on the project was erased.
 At the same time I was wondering if I could do some kind of productivity tracker tool. I've experimented with these before, 
 but they have the same problem as dev logging. If I have to do anything extra to use them, they fall by the way side. Then 
 it hit me: I could parse the TODO.txt with an external program and use it to track my progress. Just to get some kind of 
-stats about my working habbits. Dropbox proved to be very useful for this, since I could share my TODO.txt with the internet and
+stats about my working habits. Dropbox proved to be very useful for this, since I could share my TODO.txt with the internet and
 I could just write a small script that would run on a server and read the file from time to time and parse it.
 
 From there the idea of automatically creating dev logs was a very tiny step.
 
 
 The other part of this whole process lied in another productivity and process tracking method I had written. The idea was simply
-to save random screenshot from the game everytime I ran it. This way I could get a visual look into how things very progressing. 
+to save random screenshot from the game every time I ran it. This way I could get a visual look into how things very progressing. 
 This also fit nicely into the game I was making, since the visual difference from random to random shot was quite big. This proved
-to be a very fun and useful way to get somekind of sense of progress. Then I figured I could just pick one of these random shots
+to be a very fun and useful way to get some kind of sense of progress. Then I figured I could just pick one of these random shots
 every day and I'd have a fully automated dev logs. And that's what I did.
 
-Another unespected perk of this system was, that I know have a complete history of all my TODO.txts. There always seems to be 
+Another unexpected perk of this system was, that I know have a complete history of all my TODO.txts. There always seems to be 
 horrible feeling of loss when you destroy or remove completed tasks from TODO.txts. I've even know to carry some of the post-it
-notes from previous projects into new appartements that I've moved into. This knowledge that I have the complete history of
+notes from previous projects into new apartments that I've moved into. This knowledge that I have the complete history of
 all the TODO.txts makes it much easier to edit and remove things from my TODO.txts.
 
 Technical Details
